@@ -6,3 +6,37 @@ function addDateTime(message="Bonjour"){
 }
 
 alert(addDateTime());
+
+
+const btn = document.getElementById('clique');
+const nbClique = document.getElementById('nbClique');
+const reset = document.getElementById('reset');
+let number=0;
+let bouge=0;
+
+//version 1
+btn.onclick = function (){
+    number++;
+    nbClique.innerHTML = number;
+    nbClique.style.color = 'blue';
+}
+// version 2
+// btn.addEventListener('click', () =>{
+//     number++;
+//      nbClique.innerHTML = number;
+// })
+
+reset.onclick = function (){
+    number=0;
+    bouge +=10;
+    nbClique.innerHTML = number;
+    nbClique.style.color = 'red';
+    reset.style.marginLeft = `${bouge}px`;
+}
+reset.onmouseover = function (){
+    nbClique.style.color = 'black';
+}
+
+
+
+
