@@ -13,7 +13,8 @@ let pageWidth = page.clientWidth;
 let pageHeight = page.clientHeight;
 myCanvas.width = pageWidth - 20;
 myCanvas.height = pageHeight;
-
+let largeur=20;
+let longueur=20;
 // call the callback to draw our animation when the browser is ready
 //let myAnimation=requestAnimationFrame(drawOneFrame);
 function drawOneFrame() {
@@ -22,15 +23,15 @@ function drawOneFrame() {
     // however that would not be optimized.
     myContext.clearRect(0, 0, pageWidth, pageHeight);
     myAnimation=undefined;
-    myContext.fillStyle = "blue"; //'rgba(255,0,0,0.5)';//'blue';
+    myContext.fillStyle = randomColor(); //'rgba(255,0,0,0.5)';//'blue';
 
     //draw dynamically the rectangles at random locations
     for (let i = 0; i < RECT_NUMBER; i++) {
         myContext.fillRect(
             Math.floor(Math.random() * pageWidth),
             Math.floor(Math.random() * pageHeight),
-            20,
-            20
+            largeur,
+            longueur
         );
     }
 
@@ -71,8 +72,10 @@ page.oncontextmenu = function(e) {
 // lecture du clavier
 document.addEventListener('keydown', (e) =>{
     if(e.code==='NumpadAdd'){
-        page.style.backgroundColor = 'black';
+        largeur++;
+        longueur++;
     }else if(e.code==='NumpadSubtract'){
-        page.style.backgroundColor = 'red';
+        largeur--;
+        longueur--;
     }
 });
