@@ -75,10 +75,10 @@ class Films {
         // add new pizza to the menu
         const newFilm = {
             id: this.getNextId(),
-            title: body.title,
-            duration: body.duration,
-            budget: body.budget,
-            link: body.link
+            title: escape(body.title),
+            duration: escape(body.duration),
+            budget: escape(body.budget),
+            link: escape(body.link)
         };
         films.push(newFilm);
         serialize(this.jsonDbPath, films);
@@ -106,6 +106,12 @@ class Films {
         const foundIndex = films.findIndex((film) => film.id == id);
         if (foundIndex < 0) return;
         const updatedFilm = { ...films[foundIndex], ...body };
+        for (const key in body) {
+            if (Object.hasOwnProperty.call(body, key)) {
+                const element = body[key];
+                updatedFilm[key] = escape(element);
+            }
+        }
         // replace the pizza found at index : (or use splice)
         films[foundIndex] = updatedFilm;
         serialize(this.jsonDbPath, films);

@@ -27,6 +27,7 @@ Content-Type: application/json
   "password":"manager"
 }
 
+
 ### Login the manager user
 POST http://localhost:3000/auths/login
 Content-Type: application/json
@@ -34,4 +35,13 @@ Content-Type: application/json
 {
   "username":"manager",
   "password":"manager"
+}
+
+###
+POST http://localhost:3000/auths/register
+Content-Type: application/json
+
+{
+  "username":"naya",
+  "password":"naya"
 }

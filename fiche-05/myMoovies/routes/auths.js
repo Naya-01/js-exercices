@@ -45,11 +45,11 @@ router.post("/login", function (req, res, next) {
   return res.json(authenticatedUser);
 });
 
-/* GET /auths/users : list all the users that can be authenticated 
-WARNING this is a security hole !!! You shall authorize access to these ressources
-via JWT
+//  GET /auths/users : list all the users that can be authenticated
+// WARNING this is a security hole !!! You shall authorize access to these ressources
+// via JWT
 router.get("/users", function (req, res, next) {
-  return res.json(users);
-});*/
+  return res.json(userModel.getAll());
+});
 
 module.exports = router;

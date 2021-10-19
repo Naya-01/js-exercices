@@ -2,16 +2,17 @@
 const jwt = require("jsonwebtoken");
 const { parse, serialize } = require("../utils/json");
 //var escape = require("escape-html");
+const bcrypt = require('bcrypt');
 const jwtSecret = "ilovemypizza!";
 const LIFETIME_JWT = 24 * 60 * 60 * 1000; // in ms : 24 * 60 * 60 * 1000 = 24h
 
 const jsonDbPath = __dirname + "/../data/users.json";
-
+const saltRounds = 10;
 // Default data
 const defaultItems = [
   {
     username: "admin",
-    password: "admin",
+    password: "$2b$10$RqcgWQT/Irt9MQC8UfHmjuGCrQkQNeNcU6UtZURdSB/fyt6bMWARa",//admin
   },
 ];
 
@@ -71,13 +72,16 @@ class Users {
    * @returns {object} the item that was created (with id)
    */
 
-  addOne(body) {
+  async addOne(body) {
     const items = parse(this.jsonDbPath, this.defaultItems);
 
+    // hash the password (async call)
+    const hashedPassword = await bcrypt.hash(body.password, saltRounds);
     // add new item to the menu
     const newitem = {
       username: body.username,
-      password: body.password,
+      password: hashedPassword,
+      role:"user",
     };
     items.push(newitem);
     serialize(this.jsonDbPath, items);
@@ -128,10 +132,13 @@ class Users {
    * be authenticated
    */
 
-  login(username, password) {
+  async login(username, password) {
     const userFound = this.getOneByUsername(username);
     if (!userFound) return;
-    if (userFound.password !== password) return;
+    // checked hash of passwords
+    const match = await bcrypt.compare(password, userFound.password);
+    if (!match) return;
+
 
     const authenticatedUser = {
       username: username,
@@ -140,9 +147,9 @@ class Users {
 
     // replace expected token with JWT : create a JWT
     const token = jwt.sign(
-      { username: authenticatedUser.username }, // session data in the payload
-      jwtSecret, // secret used for the signature
-      { expiresIn: LIFETIME_JWT } // lifetime of the JWT
+        { username: authenticatedUser.username }, // session data in the payload
+        jwtSecret, // secret used for the signature
+        { expiresIn: LIFETIME_JWT } // lifetime of the JWT
     );
 
     authenticatedUser.token = token;
@@ -178,6 +185,7 @@ class Users {
     authenticatedUser.token = token;
     return authenticatedUser;
   }
+
 }
 
 module.exports = { Users };
