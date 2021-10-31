@@ -1,5 +1,0 @@
-<<<<<<< HEAD
-[{"username":"admin","password":"$2b$10$RqcgWQT/Irt9MQC8UfHmjuGCrQkQNeNcU6UtZURdSB/fyt6bMWARa"},{"username":"manager","password":"$2b$10$xuuDkn1F1d1z8/wgZWlz5eJ5KzASNhDJlabl6H16IZGMbqTOa2P6.","role":"admin"},{"username":"naya","password":"$2b$10$S1660FpwG4QZariGDoS8E.mgvZUTenMTRyNEk56cX7mj3LKI27zCS"},{"username":"dev","password":"$2b$10$Y8EFKe5dlVd.daKy/Wh9KOIIxoCab713S/ZblDJulYtyt80ii0mla","role":"user"}]
-=======
-[{"username":"admin","password":"$2b$10$RqcgWQT/Irt9MQC8UfHmjuGCrQkQNeNcU6UtZURdSB/fyt6bMWARa","role":"admin"},{"username":"manager","password":"$2b$10$N5OWvvbVwiw6Bi5Cghm83e50BzBM.PHM5tcKeoN1u17rF1U8utyfq","role":"user"}]
->>>>>>> d808101763b79ecc584b0b8144d74ebea57699e8
