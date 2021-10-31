@@ -45,3 +45,12 @@ Content-Type: application/json
   "username":"naya",
   "password":"naya"
 }
+
+###
+POST http://localhost:3000/auths/register
+Content-Type: application/json
+
+{
+  "username":"dev",
+  "password":"dev"
+}

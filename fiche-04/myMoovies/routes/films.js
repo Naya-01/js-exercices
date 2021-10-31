@@ -13,7 +13,7 @@ router.get("/:id", function (req, res) {
     console.log(`GET /films/${req.params.id}`);
 
     const film = filmModel.getOne(req.params.id);
-    // Send an error code '404 Not Found' if the pizza was not found
+    // Send an error code '404 Not Found' if the film was not found
     if (!film) return res.status(404).end();
 
     return res.json(film);
@@ -38,18 +38,18 @@ router.post("/", function (req, res) {
 });
 
 router.delete("/:id", function (req, res, next) {
-    console.log(`DELETE /pizzas/${req.params.id}`);
+    console.log(`DELETE /films/${req.params.id}`);
 
     const film = filmModel.deleteOne(req.params.id);
-    // Send an error code '404 Not Found' if the pizza was not found
+    // Send an error code '404 Not Found' if the film was not found
     if (!film) return res.status(404).end();
     return res.json(film);
 });
 
 router.put("/:id", function (req, res, next) {
-    console.log(`PUT /pizzas/${req.params.id}`);
+    console.log(`PUT /films/${req.params.id}`);
     const film = filmModel.updateOne(req.params.id, req.body);
-    // Send an error code 'Not Found' if the pizza was not found :
+    // Send an error code 'Not Found' if the film was not found :
     if (!film) return res.status(404).end();
     return res.json(film);
 });

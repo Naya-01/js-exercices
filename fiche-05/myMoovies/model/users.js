@@ -109,9 +109,9 @@ class Users {
    * @param {object} body - it contains all the data to be updated
    * @returns {object} the updated item or undefined if the update operation failed
    */
-  updateOne(id, body) {
+  updateOne(id, body, idKey="id") {
     const items = parse(this.jsonDbPath, this.defaultItems);
-    const foundIndex = items.findIndex((item) => item.id == id);
+    const foundIndex = items.findIndex((item) => item[idKey] == id);
     if (foundIndex < 0) return;
     // create a new object based on the existing item - prior to modification -
     // and the properties requested to be updated (those in the body of the request)

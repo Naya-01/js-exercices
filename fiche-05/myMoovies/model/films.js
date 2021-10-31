@@ -72,14 +72,20 @@ class Films {
     addOne(body) {
         const films = parse(this.jsonDbPath,this.defaultFilms);
 
-        // add new pizza to the menu
+        // add new resource
         const newFilm = {
             id: this.getNextId(),
-            title: escape(body.title),
-            duration: escape(body.duration),
-            budget: escape(body.budget),
-            link: escape(body.link)
+            //...body, // shallow copy with the spread operator
         };
+        // escape HTML chars only for props that are of type "string"
+        for (const key in body) {
+            if (Object.hasOwnProperty.call(body, key)) {
+                const element = body[key];
+                if (typeof element === "string") newFilm[key] = escape(element);
+                else newFilm[key] = element;
+            }
+        }
+
         films.push(newFilm);
         serialize(this.jsonDbPath, films);
         return newFilm;
