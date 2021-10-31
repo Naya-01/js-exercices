@@ -5,7 +5,7 @@ Content-Type: application/json
 
 {
   "username":"admin",
-  "password":"admin"
+  "password":"$2b$10$RqcgWQT/Irt9MQC8UfHmjuGCrQkQNeNcU6UtZURdSB/fyt6bMWARa"
 }
 > {%
  client.global.set("adminToken", response.body.token);
@@ -30,7 +30,7 @@ Authorization: {{adminToken}}
 }
 
 ### delete a film
-DELETE http://localhost:3000/films/4
+DELETE http://localhost:3000/films/1
 Authorization: {{adminToken}}
 
 ### update a film
