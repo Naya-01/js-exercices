@@ -1,0 +1,33 @@
+
+
+###
+GET http://localhost:3000/films?min=150
+Accept: application/json
+###
+GET http://localhost:3000/films
+Accept: application/json
+
+###
+POST http://localhost:3000/films
+Content-Type: application/json
+
+{
+  "title": "You are or not ?",
+  "duration": 139,
+  "budget" : 1564,
+  "link": "https://e-vinci.github.io/myjscourse/repositories"
+}
+
+###
+
+DELETE http://localhost:3000/films/5
+
+###
+PUT http://localhost:3000/films/2
+Content-Type: application/json
+
+{
+  "title": "Magic Green 2"
+}
+
+
