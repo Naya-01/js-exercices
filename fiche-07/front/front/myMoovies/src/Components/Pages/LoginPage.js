@@ -1,11 +1,13 @@
 import { Redirect } from "../Router/Router";
 import Navbar from "../Navbar/Navbar";
-import { setSessionObject } from "../../utils/session";
+import {getSessionObject, setSessionObject} from "../../utils/session";
 /**
  * View the Login form :
  * render a login page into the #page div (formerly login function)
  */
 function LoginPage() {
+  let user = getSessionObject("user");
+  if (user) return Redirect("/");
   // reset #page div
   const pageDiv = document.querySelector("main");
   pageDiv.innerHTML = "";

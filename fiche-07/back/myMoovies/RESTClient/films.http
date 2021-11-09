@@ -10,6 +10,18 @@ Content-Type: application/json
 > {%
  client.global.set("adminToken", response.body.token);
  %}
+### Login the default admin & define a request variable
+# @name admin
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+  "username":"tchoupi",
+  "password":"admin"
+}
+> {%
+ client.global.set("TchoupiToken", response.body.token);
+ %}
 ###
 GET http://localhost:3000/films?min=150
 Accept: application/json
@@ -45,18 +57,3 @@ Authorization: {{adminToken}}
 
 
 
-
-
-
-### Login the default admin & define a request variable
-# @name admin
-POST {{baseUrl}}/auths/login
-Content-Type: application/json
-
-{
-  "username":"tchoupi",
-  "password":"admin"
-}
-> {%
- client.global.set("adminToken", response.body.token);
- %}

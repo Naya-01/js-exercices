@@ -68,8 +68,11 @@ function AddFilmPage() {
                     "fetch error : " + response.status + " : " + response.statusText
                 );
             }
+            const film = await response.json(); // json() returns a promise => we wait for the data
+            console.log("film added : ", user);
+            Redirect("/login");
         } catch (error) {
-            console.error("MooviePage::error: ", error);
+            console.error("AddPizzaPage::error: ", error);
         }
     }//fin function
 

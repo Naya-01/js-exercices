@@ -33,7 +33,7 @@ router.post("/",authorize, function (req, res) {
     )
         return res.status(400).end();
 
-    if (req.user.username !== "admin") return res.status(403).end();
+    if (req.user.role !== "admin") return res.status(403).end();
     const film = filmModel.addOne(req.body);
 
     return res.json(film);
@@ -42,7 +42,7 @@ router.post("/",authorize, function (req, res) {
 router.delete("/:id",authorize, function (req, res, next) {
     console.log(`DELETE /pizzas/${req.params.id}`);
 
-    if (req.user.username !== "admin") return res.status(403).end();
+    if (req.user.role !== "admin") return res.status(403).end();
     const film = filmModel.deleteOne(req.params.id);
     // Send an error code '404 Not Found' if the pizza was not found
     if (!film) return res.status(404).end();
@@ -51,7 +51,7 @@ router.delete("/:id",authorize, function (req, res, next) {
 
 router.put("/:id",authorize, function (req, res, next) {
     console.log(`PUT /pizzas/${req.params.id}`);
-    if (req.user.username !== "admin") return res.status(403).end();
+    if (req.user.role !== "admin") return res.status(403).end();
 
     const film = filmModel.updateOne(req.params.id, req.body);
     // Send an error code 'Not Found' if the pizza was not found :
