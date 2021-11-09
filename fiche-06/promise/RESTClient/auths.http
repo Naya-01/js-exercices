@@ -60,6 +60,6 @@ POST http://localhost:3000/auths/register
 Content-Type: application/json
 
 {
-  "username":"testo",
-  "password":"naya"
+  "username":"rayaaaa",
+  "password":"dev"
 }

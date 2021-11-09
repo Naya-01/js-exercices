@@ -1,0 +1,45 @@
+### Login the default admin & define a request variable
+# @name admin
+POST {{baseUrl}}/auths/login
+Content-Type: application/json
+
+{
+  "username":"admin",
+  "password":"$2b$10$RqcgWQT/Irt9MQC8UfHmjuGCrQkQNeNcU6UtZURdSB/fyt6bMWARa"
+}
+> {%
+ client.global.set("adminToken", response.body.token);
+ %}
+###
+GET http://localhost:3000/films?min=150
+Accept: application/json
+###
+GET {{baseUrl}}/films
+Accept: application/json
+
+### create a film
+POST {{baseUrl}}/films
+Content-Type: application/json
+Authorization: {{adminToken}}
+
+{
+  "title": "You are or not ?",
+  "duration": 139,
+  "budget" : 1564,
+  "link": "https://e-vinci.github.io/myjscourse/repositories"
+}
+
+### delete a film
+DELETE http://localhost:3000/films/1
+Authorization: {{adminToken}}
+
+### update a film
+PUT http://localhost:3000/films/2
+Content-Type: application/json
+Authorization: {{adminToken}}
+
+{
+  "title": "Magic Green 2"
+}
+
+
