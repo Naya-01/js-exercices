@@ -28,12 +28,15 @@ const MooviePage = async () => {
         const thead = document.createElement("thead");
         const header = document.createElement("tr");
         thead.appendChild(header);
+        const header0 = document.createElement("th");
+        header0.innerText = "ID";
         const header1 = document.createElement("th");
         header1.innerText = "Title";
         const header2 = document.createElement("th");
         header2.innerText = "Duration(min)";
         const header3 = document.createElement("th");
         header3.innerText = "Budget(million)";
+        header.appendChild(header0);
         header.appendChild(header1);
         header.appendChild(header2);
         header.appendChild(header3);
@@ -42,6 +45,9 @@ const MooviePage = async () => {
         const tbody = document.createElement("tbody");
         films.forEach((film) => {
             const line = document.createElement("tr");
+            const idCell = document.createElement("td");
+            idCell.innerText = film.id;
+            line.appendChild(idCell);
             const titleCell = document.createElement("td");
             titleCell.innerText = film.title;
             line.appendChild(titleCell);

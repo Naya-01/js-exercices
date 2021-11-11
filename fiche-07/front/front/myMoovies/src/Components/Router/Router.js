@@ -3,6 +3,8 @@ import LoginPage from "../Pages/LoginPage";
 import RegisterPage from "../Pages/RegisterPage";
 import Logout from "../Logout/Logout";
 import AddFilmPage from "../Pages/AddFilmPage";
+import DeleteFilmPage from "../Pages/DeleteFilmPage";
+import UpdateFilmPage from "../Pages/UpdateFilmPage";
 
 // Configure your routes here
 const routes = {
@@ -10,6 +12,8 @@ const routes = {
   "/login": LoginPage,
   "/register": RegisterPage,
   "/film/add": AddFilmPage,
+  "/film/delete": DeleteFilmPage,
+  "/film/update": UpdateFilmPage,
   "/logout": Logout,
 };
 

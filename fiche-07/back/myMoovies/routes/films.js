@@ -40,7 +40,7 @@ router.post("/",authorize, function (req, res) {
 });
 
 router.delete("/:id",authorize, function (req, res, next) {
-    console.log(`DELETE /pizzas/${req.params.id}`);
+    console.log(`DELETE /films/${req.params.id}`);
 
     if (req.user.role !== "admin") return res.status(403).end();
     const film = filmModel.deleteOne(req.params.id);
@@ -50,7 +50,7 @@ router.delete("/:id",authorize, function (req, res, next) {
 });
 
 router.put("/:id",authorize, function (req, res, next) {
-    console.log(`PUT /pizzas/${req.params.id}`);
+    console.log(`PUT /films/${req.params.id}`);
     if (req.user.role !== "admin") return res.status(403).end();
 
     const film = filmModel.updateOne(req.params.id, req.body);

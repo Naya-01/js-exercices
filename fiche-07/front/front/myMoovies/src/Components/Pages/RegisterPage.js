@@ -1,4 +1,5 @@
 import { Redirect } from "../Router/Router";
+import Navbar from "../Navbar/Navbar";
 import { setSessionObject } from "../../utils/session";
 /**
  * View the Register form :

@@ -63,6 +63,12 @@ const Navbar = () => {
                 <a class="nav-link" href="#" data-uri="/film/add">Add film</a>
               </li>
               <li class="nav-item">
+                <a class="nav-link" href="#" data-uri="/film/update">Update film</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#" data-uri="/film/delete">Delete film</a>
+              </li>
+              <li class="nav-item">
                 <a class="nav-link" href="#" data-uri="/logout">Logout</a>
               </li>
               <li class="nav-item">
